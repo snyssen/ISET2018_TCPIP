@@ -35,6 +35,14 @@
 			this.mQuitter = new System.Windows.Forms.ToolStripMenuItem();
 			this.lblServeur = new System.Windows.Forms.Label();
 			this.tbServeur = new System.Windows.Forms.TextBox();
+			this.mcListenerClient = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcLCEcouter = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcLCConnecter = new System.Windows.Forms.ToolStripMenuItem();
+			this.tbQuestion = new System.Windows.Forms.TextBox();
+			this.lblQuestion = new System.Windows.Forms.Label();
+			this.btnValider = new System.Windows.Forms.Button();
+			this.lblReponses = new System.Windows.Forms.Label();
+			this.lbReponses = new System.Windows.Forms.ListBox();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -52,6 +60,8 @@
 			// 
 			// mCommunication
 			// 
+			this.mCommunication.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mcListenerClient});
 			this.mCommunication.Name = "mCommunication";
 			this.mCommunication.Size = new System.Drawing.Size(106, 20);
 			this.mCommunication.Text = "Communication";
@@ -95,12 +105,83 @@
 			this.tbServeur.TabIndex = 2;
 			this.tbServeur.Text = "DESKTOP-BFM28KU";
 			// 
+			// mcListenerClient
+			// 
+			this.mcListenerClient.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mcLCEcouter,
+            this.mcLCConnecter});
+			this.mcListenerClient.Name = "mcListenerClient";
+			this.mcListenerClient.Size = new System.Drawing.Size(205, 22);
+			this.mcListenerClient.Text = "TCP Listener / TCP Client";
+			// 
+			// mcLCEcouter
+			// 
+			this.mcLCEcouter.Name = "mcLCEcouter";
+			this.mcLCEcouter.Size = new System.Drawing.Size(180, 22);
+			this.mcLCEcouter.Text = "Ecouter";
+			this.mcLCEcouter.Click += new System.EventHandler(this.mcLCEcouter_Click);
+			// 
+			// mcLCConnecter
+			// 
+			this.mcLCConnecter.Name = "mcLCConnecter";
+			this.mcLCConnecter.Size = new System.Drawing.Size(180, 22);
+			this.mcLCConnecter.Text = "Connecter";
+			this.mcLCConnecter.Click += new System.EventHandler(this.mcLCConnecter_Click);
+			// 
+			// tbQuestion
+			// 
+			this.tbQuestion.Location = new System.Drawing.Point(13, 85);
+			this.tbQuestion.Name = "tbQuestion";
+			this.tbQuestion.Size = new System.Drawing.Size(339, 20);
+			this.tbQuestion.TabIndex = 4;
+			this.tbQuestion.Text = "Question";
+			// 
+			// lblQuestion
+			// 
+			this.lblQuestion.AutoSize = true;
+			this.lblQuestion.Location = new System.Drawing.Point(13, 68);
+			this.lblQuestion.Name = "lblQuestion";
+			this.lblQuestion.Size = new System.Drawing.Size(49, 13);
+			this.lblQuestion.TabIndex = 3;
+			this.lblQuestion.Text = "Question";
+			// 
+			// btnValider
+			// 
+			this.btnValider.Location = new System.Drawing.Point(13, 112);
+			this.btnValider.Name = "btnValider";
+			this.btnValider.Size = new System.Drawing.Size(339, 23);
+			this.btnValider.TabIndex = 5;
+			this.btnValider.Text = "Valider";
+			this.btnValider.UseVisualStyleBackColor = true;
+			// 
+			// lblReponses
+			// 
+			this.lblReponses.AutoSize = true;
+			this.lblReponses.Location = new System.Drawing.Point(13, 138);
+			this.lblReponses.Name = "lblReponses";
+			this.lblReponses.Size = new System.Drawing.Size(55, 13);
+			this.lblReponses.TabIndex = 6;
+			this.lblReponses.Text = "Réponses";
+			// 
+			// lbReponses
+			// 
+			this.lbReponses.FormattingEnabled = true;
+			this.lbReponses.Location = new System.Drawing.Point(13, 155);
+			this.lbReponses.Name = "lbReponses";
+			this.lbReponses.Size = new System.Drawing.Size(339, 173);
+			this.lbReponses.TabIndex = 7;
+			// 
 			// EcranPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(364, 341);
 			this.ControlBox = false;
+			this.Controls.Add(this.lbReponses);
+			this.Controls.Add(this.lblReponses);
+			this.Controls.Add(this.btnValider);
+			this.Controls.Add(this.tbQuestion);
+			this.Controls.Add(this.lblQuestion);
 			this.Controls.Add(this.tbServeur);
 			this.Controls.Add(this.lblServeur);
 			this.Controls.Add(this.menuStrip1);
@@ -127,6 +208,14 @@
 		private System.Windows.Forms.Label lblServeur;
 		private System.Windows.Forms.TextBox tbServeur;
 		private System.Windows.Forms.ToolStripMenuItem muVerifier;
+		private System.Windows.Forms.ToolStripMenuItem mcListenerClient;
+		private System.Windows.Forms.ToolStripMenuItem mcLCEcouter;
+		private System.Windows.Forms.ToolStripMenuItem mcLCConnecter;
+		private System.Windows.Forms.TextBox tbQuestion;
+		private System.Windows.Forms.Label lblQuestion;
+		private System.Windows.Forms.Button btnValider;
+		private System.Windows.Forms.Label lblReponses;
+		private System.Windows.Forms.ListBox lbReponses;
 	}
 }
 

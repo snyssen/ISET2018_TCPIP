@@ -19,20 +19,18 @@ namespace ISET2018_TCPIP
 				IPAddress[] ipVerifs = Dns.GetHostEntry(sAdresse).AddressList;
 				for (int i = 0; i < ipVerifs.Length; i++)
 				{
-					if (ipVerifs[i].AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-						if (ipVerifs[i] != new IPAddress(0x0100007f))
+					if (ipVerifs[i].AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork && ipVerifs[i] != new IPAddress(0x0100007f) /* Adresse localhost */)
+					{
+						Ping pVerif = new Ping();
+						PingReply pRepon = pVerif.Send(ipVerifs[i]);
+						if (pRepon.Status == IPStatus.Success)
 						{
-							Ping pVerif = new Ping();
-							PingReply pRepon = pVerif.Send(ipVerifs[i]);
-							if (pRepon.Status == IPStatus.Success)
-								rep = "Ping réussi";
-							else
-								rep = "Ping échoué, raison : " + pRepon.Status.ToString();
+							rep = ipVerifs[i];
+							break;
 						}
+					}
 				}
 			}
-			else
-				rep = "Veuillez renseigner une adresse SVP";
 			return rep;
 		}
 	}
