@@ -77,5 +77,39 @@ namespace ISET2018_TCPIP
 			MonClient.Close();
 			mcLCConnecter.Enabled = mcLCEcouter.Enabled = true;
 		}
+
+		private void mcULEcouter_Click(object sender, EventArgs e)
+		{
+			mcULConnecter.Enabled = mcULEcouter.Enabled = false;
+			string Donnees;
+			byte[] tabOctets;
+			IPAddress IPLocal = Utilitaires.Verifier(tbServeur.Text);
+			IPEndPoint IPEP = new IPEndPoint(IPLocal, 8000);
+			UdpClient MonServeur = new UdpClient(8000);
+			lbReponses.Items.Add("UDP prêt à recevoir des données de " + IPEP.ToString());
+			tabOctets = MonServeur.Receive(ref IPEP); // Fonction bloquante
+			Donnees = Encoding.ASCII.GetString(tabOctets, 0, tabOctets.Length);
+			lbReponses.Items.Add("Données reçues : ");
+			lbReponses.Items.Add(Donnees);
+			lbReponses.Items.Add("Fermeture serveur");
+			MonServeur.Close();
+			mcULConnecter.Enabled = mcULEcouter.Enabled = true;
+		}
+
+		private void mcULConnecter_Click(object sender, EventArgs e)
+		{
+			mcULConnecter.Enabled = mcULEcouter.Enabled = false;
+			IPAddress IPServeur = Utilitaires.Verifier(tbServeur.Text);
+			UdpClient MonClient = new UdpClient();
+			MonClient.Connect(IPServeur, 8000);
+			lbReponses.Items.Add("Client connecté à " + IPServeur.ToString() + ":8000");
+			byte[] tabOctets = Encoding.ASCII.GetBytes(tbQuestion.Text);
+			MonClient.Send(tabOctets, tabOctets.Length);
+			lbReponses.Items.Add("Message envoyé");
+			lbReponses.Items.Add(tbQuestion.Text);
+			lbReponses.Items.Add("fermeture de la connexion");
+			MonClient.Close();
+			mcULConnecter.Enabled = mcULEcouter.Enabled = true;
+		}
 	}
 }

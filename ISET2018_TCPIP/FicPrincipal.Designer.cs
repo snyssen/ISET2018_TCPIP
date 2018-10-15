@@ -43,6 +43,9 @@
 			this.btnValider = new System.Windows.Forms.Button();
 			this.lblReponses = new System.Windows.Forms.Label();
 			this.lbReponses = new System.Windows.Forms.ListBox();
+			this.mcUDP = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcULEcouter = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcULConnecter = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -61,7 +64,8 @@
 			// mCommunication
 			// 
 			this.mCommunication.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mcListenerClient});
+            this.mcListenerClient,
+            this.mcUDP});
 			this.mCommunication.Name = "mCommunication";
 			this.mCommunication.Size = new System.Drawing.Size(106, 20);
 			this.mCommunication.Text = "Communication";
@@ -111,7 +115,7 @@
             this.mcLCEcouter,
             this.mcLCConnecter});
 			this.mcListenerClient.Name = "mcListenerClient";
-			this.mcListenerClient.Size = new System.Drawing.Size(205, 22);
+			this.mcListenerClient.Size = new System.Drawing.Size(209, 22);
 			this.mcListenerClient.Text = "TCP Listener / TCP Client";
 			// 
 			// mcLCEcouter
@@ -171,6 +175,29 @@
 			this.lbReponses.Size = new System.Drawing.Size(339, 173);
 			this.lbReponses.TabIndex = 7;
 			// 
+			// mcUDP
+			// 
+			this.mcUDP.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mcULEcouter,
+            this.mcULConnecter});
+			this.mcUDP.Name = "mcUDP";
+			this.mcUDP.Size = new System.Drawing.Size(209, 22);
+			this.mcUDP.Text = "UDP Listener / UDP Client";
+			// 
+			// mcULEcouter
+			// 
+			this.mcULEcouter.Name = "mcULEcouter";
+			this.mcULEcouter.Size = new System.Drawing.Size(180, 22);
+			this.mcULEcouter.Text = "Ecouter";
+			this.mcULEcouter.Click += new System.EventHandler(this.mcULEcouter_Click);
+			// 
+			// mcULConnecter
+			// 
+			this.mcULConnecter.Name = "mcULConnecter";
+			this.mcULConnecter.Size = new System.Drawing.Size(180, 22);
+			this.mcULConnecter.Text = "Connecter";
+			this.mcULConnecter.Click += new System.EventHandler(this.mcULConnecter_Click);
+			// 
 			// EcranPrincipal
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,6 +243,9 @@
 		private System.Windows.Forms.Button btnValider;
 		private System.Windows.Forms.Label lblReponses;
 		private System.Windows.Forms.ListBox lbReponses;
+		private System.Windows.Forms.ToolStripMenuItem mcUDP;
+		private System.Windows.Forms.ToolStripMenuItem mcULEcouter;
+		private System.Windows.Forms.ToolStripMenuItem mcULConnecter;
 	}
 }
 
