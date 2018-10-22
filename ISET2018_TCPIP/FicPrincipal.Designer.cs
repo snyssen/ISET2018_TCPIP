@@ -30,22 +30,26 @@
 		{
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.mCommunication = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcListenerClient = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcLCEcouter = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcLCConnecter = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcUDP = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcULEcouter = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcULConnecter = new System.Windows.Forms.ToolStripMenuItem();
 			this.mUtilitaire = new System.Windows.Forms.ToolStripMenuItem();
 			this.muVerifier = new System.Windows.Forms.ToolStripMenuItem();
 			this.mQuitter = new System.Windows.Forms.ToolStripMenuItem();
 			this.lblServeur = new System.Windows.Forms.Label();
 			this.tbServeur = new System.Windows.Forms.TextBox();
-			this.mcListenerClient = new System.Windows.Forms.ToolStripMenuItem();
-			this.mcLCEcouter = new System.Windows.Forms.ToolStripMenuItem();
-			this.mcLCConnecter = new System.Windows.Forms.ToolStripMenuItem();
 			this.tbQuestion = new System.Windows.Forms.TextBox();
 			this.lblQuestion = new System.Windows.Forms.Label();
 			this.btnValider = new System.Windows.Forms.Button();
 			this.lblReponses = new System.Windows.Forms.Label();
 			this.lbReponses = new System.Windows.Forms.ListBox();
-			this.mcUDP = new System.Windows.Forms.ToolStripMenuItem();
-			this.mcULEcouter = new System.Windows.Forms.ToolStripMenuItem();
-			this.mcULConnecter = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcSocket = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcsEcouter = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcsConnecter = new System.Windows.Forms.ToolStripMenuItem();
+			this.mcsDeconnecter = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -65,10 +69,57 @@
 			// 
 			this.mCommunication.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mcListenerClient,
-            this.mcUDP});
+            this.mcUDP,
+            this.mcSocket});
 			this.mCommunication.Name = "mCommunication";
 			this.mCommunication.Size = new System.Drawing.Size(106, 20);
 			this.mCommunication.Text = "Communication";
+			// 
+			// mcListenerClient
+			// 
+			this.mcListenerClient.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mcLCEcouter,
+            this.mcLCConnecter});
+			this.mcListenerClient.Name = "mcListenerClient";
+			this.mcListenerClient.Size = new System.Drawing.Size(209, 22);
+			this.mcListenerClient.Text = "TCP Listener / TCP Client";
+			// 
+			// mcLCEcouter
+			// 
+			this.mcLCEcouter.Name = "mcLCEcouter";
+			this.mcLCEcouter.Size = new System.Drawing.Size(129, 22);
+			this.mcLCEcouter.Text = "Ecouter";
+			this.mcLCEcouter.Click += new System.EventHandler(this.mcLCEcouter_Click);
+			// 
+			// mcLCConnecter
+			// 
+			this.mcLCConnecter.Name = "mcLCConnecter";
+			this.mcLCConnecter.Size = new System.Drawing.Size(129, 22);
+			this.mcLCConnecter.Text = "Connecter";
+			this.mcLCConnecter.Click += new System.EventHandler(this.mcLCConnecter_Click);
+			// 
+			// mcUDP
+			// 
+			this.mcUDP.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mcULEcouter,
+            this.mcULConnecter});
+			this.mcUDP.Name = "mcUDP";
+			this.mcUDP.Size = new System.Drawing.Size(209, 22);
+			this.mcUDP.Text = "UDP Listener / UDP Client";
+			// 
+			// mcULEcouter
+			// 
+			this.mcULEcouter.Name = "mcULEcouter";
+			this.mcULEcouter.Size = new System.Drawing.Size(180, 22);
+			this.mcULEcouter.Text = "Ecouter";
+			this.mcULEcouter.Click += new System.EventHandler(this.mcULEcouter_Click);
+			// 
+			// mcULConnecter
+			// 
+			this.mcULConnecter.Name = "mcULConnecter";
+			this.mcULConnecter.Size = new System.Drawing.Size(180, 22);
+			this.mcULConnecter.Text = "Connecter";
+			this.mcULConnecter.Click += new System.EventHandler(this.mcULConnecter_Click);
 			// 
 			// mUtilitaire
 			// 
@@ -81,7 +132,7 @@
 			// muVerifier
 			// 
 			this.muVerifier.Name = "muVerifier";
-			this.muVerifier.Size = new System.Drawing.Size(180, 22);
+			this.muVerifier.Size = new System.Drawing.Size(110, 22);
 			this.muVerifier.Text = "Vérifier";
 			this.muVerifier.Click += new System.EventHandler(this.muVerifier_Click);
 			// 
@@ -109,29 +160,6 @@
 			this.tbServeur.TabIndex = 2;
 			this.tbServeur.Text = "DESKTOP-BFM28KU";
 			// 
-			// mcListenerClient
-			// 
-			this.mcListenerClient.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mcLCEcouter,
-            this.mcLCConnecter});
-			this.mcListenerClient.Name = "mcListenerClient";
-			this.mcListenerClient.Size = new System.Drawing.Size(209, 22);
-			this.mcListenerClient.Text = "TCP Listener / TCP Client";
-			// 
-			// mcLCEcouter
-			// 
-			this.mcLCEcouter.Name = "mcLCEcouter";
-			this.mcLCEcouter.Size = new System.Drawing.Size(180, 22);
-			this.mcLCEcouter.Text = "Ecouter";
-			this.mcLCEcouter.Click += new System.EventHandler(this.mcLCEcouter_Click);
-			// 
-			// mcLCConnecter
-			// 
-			this.mcLCConnecter.Name = "mcLCConnecter";
-			this.mcLCConnecter.Size = new System.Drawing.Size(180, 22);
-			this.mcLCConnecter.Text = "Connecter";
-			this.mcLCConnecter.Click += new System.EventHandler(this.mcLCConnecter_Click);
-			// 
 			// tbQuestion
 			// 
 			this.tbQuestion.Location = new System.Drawing.Point(13, 85);
@@ -157,6 +185,7 @@
 			this.btnValider.TabIndex = 5;
 			this.btnValider.Text = "Valider";
 			this.btnValider.UseVisualStyleBackColor = true;
+			this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
 			// 
 			// lblReponses
 			// 
@@ -175,28 +204,37 @@
 			this.lbReponses.Size = new System.Drawing.Size(339, 173);
 			this.lbReponses.TabIndex = 7;
 			// 
-			// mcUDP
+			// mcSocket
 			// 
-			this.mcUDP.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mcULEcouter,
-            this.mcULConnecter});
-			this.mcUDP.Name = "mcUDP";
-			this.mcUDP.Size = new System.Drawing.Size(209, 22);
-			this.mcUDP.Text = "UDP Listener / UDP Client";
+			this.mcSocket.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mcsEcouter,
+            this.mcsConnecter,
+            this.mcsDeconnecter});
+			this.mcSocket.Name = "mcSocket";
+			this.mcSocket.Size = new System.Drawing.Size(209, 22);
+			this.mcSocket.Text = "Socket";
 			// 
-			// mcULEcouter
+			// mcsEcouter
 			// 
-			this.mcULEcouter.Name = "mcULEcouter";
-			this.mcULEcouter.Size = new System.Drawing.Size(180, 22);
-			this.mcULEcouter.Text = "Ecouter";
-			this.mcULEcouter.Click += new System.EventHandler(this.mcULEcouter_Click);
+			this.mcsEcouter.Name = "mcsEcouter";
+			this.mcsEcouter.Size = new System.Drawing.Size(180, 22);
+			this.mcsEcouter.Text = "Ecouter";
+			this.mcsEcouter.Click += new System.EventHandler(this.mcsEcouter_Click);
 			// 
-			// mcULConnecter
+			// mcsConnecter
 			// 
-			this.mcULConnecter.Name = "mcULConnecter";
-			this.mcULConnecter.Size = new System.Drawing.Size(180, 22);
-			this.mcULConnecter.Text = "Connecter";
-			this.mcULConnecter.Click += new System.EventHandler(this.mcULConnecter_Click);
+			this.mcsConnecter.Name = "mcsConnecter";
+			this.mcsConnecter.Size = new System.Drawing.Size(180, 22);
+			this.mcsConnecter.Text = "Connecter";
+			this.mcsConnecter.Click += new System.EventHandler(this.mcsConnecter_Click);
+			// 
+			// mcsDeconnecter
+			// 
+			this.mcsDeconnecter.Enabled = false;
+			this.mcsDeconnecter.Name = "mcsDeconnecter";
+			this.mcsDeconnecter.Size = new System.Drawing.Size(180, 22);
+			this.mcsDeconnecter.Text = "Déconnecter";
+			this.mcsDeconnecter.Click += new System.EventHandler(this.mcsDeconnecter_Click);
 			// 
 			// EcranPrincipal
 			// 
@@ -246,6 +284,10 @@
 		private System.Windows.Forms.ToolStripMenuItem mcUDP;
 		private System.Windows.Forms.ToolStripMenuItem mcULEcouter;
 		private System.Windows.Forms.ToolStripMenuItem mcULConnecter;
+		private System.Windows.Forms.ToolStripMenuItem mcSocket;
+		private System.Windows.Forms.ToolStripMenuItem mcsEcouter;
+		private System.Windows.Forms.ToolStripMenuItem mcsConnecter;
+		private System.Windows.Forms.ToolStripMenuItem mcsDeconnecter;
 	}
 }
 
